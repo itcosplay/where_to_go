@@ -38,8 +38,8 @@ class Image(models.Model):
     img = models.ImageField(
         verbose_name='изображение'
     )
-    order_number = models.IntegerField(
-        verbose_name='порядковый номер'
+    position = models.IntegerField(
+        verbose_name='позиция'
     )
 
     def __str__(self):
