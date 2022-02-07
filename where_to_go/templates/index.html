@@ -1,11 +1,12 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8">
   <title>Куда пойти — Москва глазами Артёма</title>
 
-  <link rel="shortcut icon" href="{% static 'where_to_go/favicon.png'%}" type="image/png">
+  <link rel="shortcut icon" href="{% static 'where_to_go/favicon.png' %}" type="image/png">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -39,38 +40,8 @@
       width: 100px;
     }
   </style>
-  <script id="places-geojson" type="application/json">
-    {
-      "type": "FeatureCollection",
-      "features": [
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [37.62, 55.793676]
-          },
-          "properties": {
-            "title": "«Легенды Москвы",
-            "placeId": "moscow_legends",
-            
-            "detailsUrl": "{% static 'where_to_go/places/moscow_legends.json' %}"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [37.64, 55.753676]
-          },
-          "properties": {
-            "title": "Крыши24.рф",
-            "placeId": "roofs24",
-            "detailsUrl": "{% static 'where_to_go/places/roofs24.json' %}"
-          }
-        }
-      ]
-    }
-  </script>
+  
+  {{ places|json_script:"places-geojson" }}
 
   <script id="app-template" type="text/template">
     <div v-bind:class="{'sidebar-content': 1, 'bg-white': selectedPlace, 'bg-secondary': !selectedPlace}">
@@ -125,6 +96,7 @@
   </script>
 
 </head>
+
 <body>
   <div id="sidebar">
     <div id="sidebar-app"></div>

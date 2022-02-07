@@ -41,6 +41,6 @@ class Image(models.Model):
     position = models.IntegerField(
         verbose_name='позиция'
     )
-
+    
     def __str__(self):
         return f'{self.title}'
