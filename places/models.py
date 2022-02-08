@@ -20,12 +20,17 @@ class Place(models.Model):
     latitude = models.FloatField(
         verbose_name='lat'
     )
-    lontitude = models.FloatField(
+    longitude = models.FloatField(
         verbose_name='lng'
     )
 
     def __str__(self):
         return f'{self.title}'
+
+    class Meta:
+        unique_together = (
+            ('longitude', 'latitude')
+        )
 
 
 class Image(models.Model):
@@ -40,6 +45,7 @@ class Image(models.Model):
         verbose_name='изображение'
     )
     position = models.IntegerField(
+        default=0,
         verbose_name='позиция'
     )
     

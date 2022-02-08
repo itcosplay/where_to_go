@@ -15,7 +15,7 @@ def get_place_by_id(request, place_id):
         "description_short": place.description_short,
         "description_long": place.description_long,
         "coordinates": {
-            "lng": place.lontitude,
+            "lng": place.longitude,
             "lat": place.latitude
         }
     }
@@ -36,7 +36,7 @@ def serialize_place_data(place):
         "geometry": {
             "type": "Point",
             "coordinates": [
-                place.lontitude,
+                place.longitude,
                 place.latitude
             ],
         },
