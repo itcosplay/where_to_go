@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
+from tinymce.models import HTMLField
 
 
 class Place(models.Model):
@@ -13,7 +14,7 @@ class Place(models.Model):
         verbose_name='краткое описание'
         
     )
-    description_long = models.TextField(
+    description_long = HTMLField(
         verbose_name='полное описание'
     )
     latitude = models.FloatField(

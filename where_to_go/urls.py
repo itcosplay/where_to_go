@@ -18,6 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 
 from where_to_go import views
 
@@ -25,5 +26,6 @@ from where_to_go import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main_page),
-    path('places/<int:place_id>', views.get_place_by_id, name='place_by_id')
+    path('places/<int:place_id>', views.get_place_by_id, name='place_by_id'),
+    path('tinymce/', include('tinymce.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
