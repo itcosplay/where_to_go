@@ -10,8 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-import os
-
 from environs import Env
 
 from pathlib import Path
@@ -27,15 +25,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY', 'empty')
+SECRET_KEY = env.str('SECRET_KEY', 'empty')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 # Application definition
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', not DEBUG)
+SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', 0)
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', not DEBUG)
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', not DEBUG)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,8 +66,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'where_to_go/templates')
+            BASE_DIR/'templates',
+            BASE_DIR/'where_to_go/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,17 +131,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = env.str('STATIC_URL', '/static/')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = env.str('STATIC_ROOT', str(BASE_DIR/'static'))
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'where_to_go/static')
-]
+STATICFILES_DIRS = env.list('STATICFILES_DIRS', default=[])
 
-MEDIA_URL = '/media/'
+MEDIA_URL = env.str('MEDIA_URL', '/media/')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+MEDIA_ROOT = env.str('MEDIA_ROOT', str(BASE_DIR/'media'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
