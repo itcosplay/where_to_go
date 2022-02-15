@@ -135,7 +135,12 @@ STATIC_URL = env.str('STATIC_URL', '/static/')
 
 STATIC_ROOT = env.str('STATIC_ROOT', str(BASE_DIR/'static'))
 
-STATICFILES_DIRS = env.list('STATICFILES_DIRS', default=[])
+STATICFILES_DIRS = env.list(
+    'STATICFILES_DIRS',
+    default=[
+        str(BASE_DIR/'where_to_go/static'),
+    ]
+)
 
 MEDIA_URL = env.str('MEDIA_URL', '/media/')
 
