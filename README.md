@@ -3,11 +3,23 @@
 
 
 ## Необходимое окружение
-Для локального развертывания переменных окружения не требуется.
+|переменная|описание|тип|значение по умолчанию
+|----------|--------|--------------|---------------------
+|`SECRET_KEY`|Секретный ключ проекта|string|`empty`
+|`DEBUG`|Отладочный режим|bool|`False`
+|`ALLOWED_HOSTS`|см. [документацию](https://docs.djangoproject.com/en/4.0/ref/settings/#allowed-hosts)|string|`[]`
+|`SECURE_SSL_REDIRECT`|см. [документацию](https://docs.djangoproject.com/en/4.0/ref/settings/#secure-ssl-redirect)|bool|`not DEBUG`
+|`SECURE_HSTS_SECONDS`|см. [документацию](https://docs.djangoproject.com/en/4.0/ref/settings/#secure-hsts-seconds)|integer|`0`
+|`SESSION_COOKIE_SECURE`|см. [документацию](https://docs.djangoproject.com/en/4.0/ref/settings/#session-cookie-secure)|bool|`not DEBUG`
+|`CSRF_COOKIE_SECURE`|см. [документацию](https://docs.djangoproject.com/en/4.0/ref/settings/#csrf-cookie-secure)|bool|`not DEBUG`
+
+Все переменные окружения должны храниться в файле .env в корне проекта.
+
 
 
 ## Как установить
 * Клонируем репозиторий
+* Добавляем файл .env с необходимыми переменными
 * Создаем виртуальное окружение
 * Устанавливаем зависимости
 ```
