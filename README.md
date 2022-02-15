@@ -1,5 +1,5 @@
 # Куда пойти — Москва глазами Артёма
-Сайт доступен по [ссылке](https://itcosplay.pythonanywhere.com/)
+Сайт доступен по [ссылке](https://itcosplay.pythonanywhere.com/).
 
 
 ## Необходимое окружение
