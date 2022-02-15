@@ -48,7 +48,7 @@ def get_geojson_about_place(place):
     }
 
 
-def main_page(request):
+def render_main_page(request):
     places = Place.objects.all()
 
     context = {
