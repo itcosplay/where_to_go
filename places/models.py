@@ -1,3 +1,4 @@
+from turtle import title
 from django.db import models
 from django.db.models.deletion import CASCADE
 from tinymce.models import HTMLField
@@ -35,12 +36,11 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    title = models.ForeignKey(
+    place = models.ForeignKey(
         'Place',
         related_name='images',
         on_delete=CASCADE,
         verbose_name='название'
-
     )
     img = models.ImageField(
         verbose_name='изображение'
@@ -51,7 +51,7 @@ class Image(models.Model):
     )
     
     def __str__(self):
-        return self.title
+        return str(self.place)
 
     class Meta:
         ordering = ['position']

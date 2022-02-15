@@ -24,7 +24,7 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ['title', 'position']
+    list_display = ['place', 'position']
 
 
 @admin.register(Place)

@@ -48,7 +48,7 @@ def load_place(url):
         response = requests.get(url)
         response.raise_for_status()
 
-        image = Image(title=place)
+        image = Image(place=place)
         image.img.save(
             image_name,
             ContentFile(response.content),
