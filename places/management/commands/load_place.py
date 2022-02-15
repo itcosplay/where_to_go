@@ -22,13 +22,13 @@ def load_place(url):
     response = requests.get(url)
     response.raise_for_status()
 
-    place_data = response.json()
+    place_raw = response.json()
 
-    title = place_data['title']
-    description_short = place_data['description_short']
-    description_long = place_data['description_long']
-    latitude = place_data['coordinates']['lat']
-    longitude = place_data['coordinates']['lng']
+    title = place_raw['title']
+    description_short = place_raw['description_short']
+    description_long = place_raw['description_long']
+    latitude = place_raw['coordinates']['lat']
+    longitude = place_raw['coordinates']['lng']
 
     place, created = Place.objects.get_or_create(
         latitude=float(latitude),
@@ -42,7 +42,7 @@ def load_place(url):
 
     if not created: return
 
-    for url in place_data['imgs']:
+    for url in place_raw['imgs']:
         image_name = urlparse(url).path.split('/')[-1]
 
         response = requests.get(url)
