@@ -29,7 +29,7 @@ def get_place_by_id(request, place_id):
     )
 
 
-def serialize_place_data(place):
+def get_geojson_about_place(place):
     
     return {
         "type": "Feature",
@@ -54,7 +54,7 @@ def main_page(request):
     context = {
         "type": "FeatureCollection",
         "features": [
-            serialize_place_data(place) for place in places
+            get_geojson_about_place(place) for place in places
         ]
     }    
 
