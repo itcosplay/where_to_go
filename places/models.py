@@ -26,7 +26,7 @@ class Place(models.Model):
     )
 
     def __str__(self):
-        return f'{self.title}'
+        return self.title
 
     class Meta:
         unique_together = (
@@ -51,7 +51,7 @@ class Image(models.Model):
     )
     
     def __str__(self):
-        return f'{self.title}'
+        return self.title
 
     class Meta:
         ordering = ['position']
