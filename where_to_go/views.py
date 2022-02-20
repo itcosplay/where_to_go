@@ -9,7 +9,7 @@ from places.models import Place
 def get_place_by_id(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
 
-    details_url = {
+    details = {
         "title": place.title,
         "imgs": [img.img.url for img in place.images.all()],
         "description_short": place.description_short,
@@ -21,7 +21,7 @@ def get_place_by_id(request, place_id):
     }
 
     return JsonResponse(
-        details_url, safe=False,
+        details, safe=False,
         json_dumps_params={
             'ensure_ascii': False,
             'indent': 2
