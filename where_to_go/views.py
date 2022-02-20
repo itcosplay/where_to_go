@@ -29,7 +29,7 @@ def get_place_by_id(request, place_id):
     )
 
 
-def get_geojson_about_place(place):
+def get_place_geojson(place):
     
     return {
         "type": "Feature",
@@ -54,7 +54,7 @@ def render_main_page(request):
     context = {
         "type": "FeatureCollection",
         "features": [
-            get_geojson_about_place(place) for place in places
+            get_place_geojson(place) for place in places
         ]
     }    
 
